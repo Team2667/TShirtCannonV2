@@ -11,9 +11,7 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.Drive;
-import frc.robot.commands.DriveToDistance;
 import frc.robot.subsystems.DriveTrain;
-import frc.robot.subsystems.LidarSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
@@ -27,11 +25,7 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private XboxController joyStick;
   private  DriveTrain driveTrain;
-  private LidarSubsystem lidarSubsystem;
-  private DriveToDistance driveToDistance;
   private  Drive driveCmd;
-
-
 
 
   /**
@@ -51,27 +45,17 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     joyStick = new XboxController(0);
-    //createDriveTrainSubsystem();
-    createLidarSubsystem();
-
-  }
-
-  private void createLidarSubsystem(){
-    this.lidarSubsystem = new LidarSubsystem();
+    createDriveTrainSubsystem();
   }
 
   private void createDriveTrainSubsystem(){
     driveTrain = new DriveTrain();
     driveCmd = new Drive(driveTrain,joyStick);
     driveTrain.setDefaultCommand(driveCmd);
-    driveToDistance = new DriveToDistance(driveTrain);
-    JoystickButton x = new JoystickButton(joyStick,XboxController.Button.kX.value);
-    x.whenPressed(driveToDistance);
+  }
 
-
-    // Add the drive to distance command to a button
-    
-    }
+  //TODO: Add a createCannonSubsystem() method. This method should create create the cannon subsystem, create any commands that belong
+  // to the cannon subsystem and bind the command to a button on the joyStick object. See createDriveTrainSubsystem as an example.
 
 
   /**

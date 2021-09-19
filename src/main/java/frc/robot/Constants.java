@@ -20,4 +20,6 @@ public final class Constants {
     public static final int DT_RIGHT_PRIMARY = 3;
     public static final int DT_LEFT_FOLLOWER = 2;
     public static final int DT_RIGHT_FOLLOWER = 4;
+
+    // TODO: Add constants for the solenoid's can id and channel Id.
 }
